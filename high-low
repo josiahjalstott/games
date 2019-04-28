@@ -1,0 +1,40 @@
+#highlow game
+
+#introduction
+print("I'm thinking of an integer between 1 and 100.")
+print("Guess an integer, and I'll tell you if you're too high, too low, or got it right.")
+print("Good luck!")
+
+#generate random number
+import random
+number = random.randint(1, 100)
+number = int(number)
+
+#begin counter
+count = 1
+
+#ask user for their first guess
+print("")
+print("Turn Number {0}".format(count))
+guess = input("Please enter a number: ")
+guess = int(guess)
+
+#while guess does not equal number
+while guess != number:
+    if guess > number:
+        print ("Too high. Try again.")
+    if guess < number:
+        print ("Too low. Try again.")
+    count = 1 + count
+    print("")
+    print("Turn Number {0}".format(count))
+    guess = input("Please enter a number: ")
+    guess = int(guess)
+    
+#if correct
+if guess == number:
+    if count == 1:
+        print("Correct! It took 1 turn!".format(count))
+    if count > 1:
+        print("Correct! It took {0} turns!".format(count))
+
