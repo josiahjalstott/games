@@ -1,0 +1,61 @@
+#introduction
+print("Please think of a number between one and one hundred.")
+print("I'll guess your number.")
+print("You tell me if I'm too high, too low, or correct.")
+
+#begin counter
+count = 1
+
+#guess number
+import random
+guess = random.randint(1,100)
+guess = int(guess)
+print("")
+print("Turn Number {}:".format(count))
+print("I guess {}.".format(guess))
+
+#ask user if correct
+trial = input("Was I too (h)igh, too (l)ow, or (c)orrect? ")
+
+#important definitions
+guessl = 1
+guessl = int(guessl)
+guessh = 100
+guessh = int(guessh)
+
+
+#if incorrect
+while trial != "c":
+
+    count = count + 1
+
+    if trial == "h":
+        guessh = guess -1
+        import random
+        guess = random.randint(guessl,guessh)
+        guess = int(guess)
+        print("")
+        print("Turn Number {}:".format(count))
+        print("I guess {}.".format(guess))
+
+    if trial == "l":
+        guessl = guess + 1
+        import random
+        guess = random.randint(guessl,guessh)
+        guess = int(guess)
+        print("")
+        print("Turn Number {}:".format(count))
+        print("I guess {}.".format(guess))
+
+    else:
+        print("I did not understand. Please use 'h,' 'l,' or 'c' as follows:")
+
+    trial = input("Was I too (h)igh, too (l)ow, or (c)orrect? ")
+
+#if correct
+if trial == "c":
+    if count == 1:
+        print("I got it! It took 1 turn!".format(count))
+    if count > 1:
+        print("I got it! It took {0} turns!".format(count))
+
