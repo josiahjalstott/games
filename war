@@ -1,0 +1,298 @@
+#definitions and lists
+
+from random import *
+
+NUMCARDS = 52
+DECK = 0
+PLAYER = 1
+COMP = 2
+
+cardLoc = [0] * NUMCARDS
+suitName = ("hearts", "diamonds", "spades", "clubs")
+rankName = ("Ace", "Two", "Three", "Four", "Five", "Six", "Seven", 
+            "Eight", "Nine", "Ten", "Jack", "Queen", "King")
+playerName = ("Deck", "Player", "Computer")
+
+#functions
+
+#Introduction
+def intro():
+    print("Welcome! This is a computer simulation of the card game WAR!")
+
+#resets the deck
+def clearDeck():
+    cardLoc = [0] * NUMCARDS
+
+#assigns cards to a location
+def assignCard():
+    count = 0
+    while count < 52:
+        cardLoc[count] = 1
+        count = count + 1
+        cardLoc[count] = 2
+        count = count + 1
+    import random
+    random.shuffle(cardLoc)
+
+#play a hand of war
+def execute():
+
+    pCard = 0
+    cCard = 0
+
+    #generate position
+    import random
+    x = random.randrange(0,51)
+    if cardLoc[x] != PLAYER:
+        while cardLoc[x] != PLAYER:
+            import random
+            x = random.randrange(0,51)
+    if cardLoc[x] == PLAYER:
+        pCard = x
+
+    import random
+    y = random.randrange(0,51)
+    if cardLoc[y] != COMP:
+        while cardLoc[y] != COMP:
+            import random
+            y = random.randrange(0,51)
+    if cardLoc[y] == COMP:
+        cCard = y
+
+    #define suit and rank    
+    pCard = int(pCard)
+    psuit = pCard/13
+    psuit = int(psuit)
+    pCard= int(pCard)
+    prank = pCard%13
+    print("Your Card: {0} of {1}".format(rankName[prank],suitName[psuit]))
+
+    cCard = int(cCard)
+    csuit = cCard/13
+    csuit = int(csuit)
+    cCard= int(cCard)
+    crank = cCard%13
+    print("Computer Card: {0} of {1}".format(rankName[crank],suitName[csuit]))
+
+    #compare cards
+    if prank > crank:
+        print("You won!")
+        cardLoc[cCard] = 1
+        
+    if crank > prank:
+        print("Computer won!")
+        cardLoc[pCard] = 2
+
+    #what follows is the very complicated "war" scenario       
+    if prank == crank:
+        print("")
+        print("WAR!")
+        print("")
+        p1 = 0
+        p2 = 0
+        p3 = 0
+        p4 = 0
+        c1 = 0
+        c2 = 0
+        c3 = 0
+        c4 = 0
+
+        #import 4 random cards for each team
+        import random
+        x = random.randrange(0,51)
+        if cardLoc[x] != PLAYER:
+            while cardLoc[x] != PLAYER:
+                import random
+                x = random.randrange(0,51)
+        if cardLoc[x] == PLAYER:
+            p1 = x
+            
+        import random
+        x = random.randrange(0,51)
+        if cardLoc[x] != PLAYER:
+            while cardLoc[x] != PLAYER:
+                import random
+                x = random.randrange(0,51)
+        if cardLoc[x] == PLAYER:
+            p2 = x
+
+        import random
+        x = random.randrange(0,51)
+        if cardLoc[x] != PLAYER:
+            while cardLoc[x] != PLAYER:
+                import random
+                x = random.randrange(0,51)
+        if cardLoc[x] == PLAYER:
+            p3 = x
+
+        import random
+        x = random.randrange(0,51)
+        if cardLoc[x] != PLAYER:
+            while cardLoc[x] != PLAYER:
+                import random
+                x = random.randrange(0,51)
+        if cardLoc[x] == PLAYER:
+            p4 = x
+
+        import random
+        x = random.randrange(0,51)
+        if cardLoc[x] != PLAYER:
+            while cardLoc[x] != PLAYER:
+                import random
+                x = random.randrange(0,51)
+        if cardLoc[x] == PLAYER:
+            c1 = x
+            
+        import random
+        x = random.randrange(0,51)
+        if cardLoc[x] != PLAYER:
+            while cardLoc[x] != PLAYER:
+                import random
+                x = random.randrange(0,51)
+        if cardLoc[x] == PLAYER:
+            c2 = x
+
+        import random
+        x = random.randrange(0,51)
+        if cardLoc[x] != PLAYER:
+            while cardLoc[x] != PLAYER:
+                import random
+                x = random.randrange(0,51)
+        if cardLoc[x] == PLAYER:
+            c3 = x
+
+        import random
+        x = random.randrange(0,51)
+        if cardLoc[x] != PLAYER:
+            while cardLoc[x] != PLAYER:
+                import random
+                x = random.randrange(0,51)
+        if cardLoc[x] == PLAYER:
+            c4 = x
+
+        #define all random cards by suit and rank
+        p1 = int(p1)
+        psuit = p1/13
+        psuit = int(psuit)
+        p1= int(p1)
+        prank = p1%13
+        print("Your Card 1: {0} of {1}".format(rankName[prank],suitName[psuit]))
+
+        p2 = int(p2)
+        psuit = p2/13
+        psuit = int(psuit)
+        p2= int(p2)
+        prank = p2%13
+        print("Your Card 2: {0} of {1}".format(rankName[prank],suitName[psuit]))
+
+        p3 = int(p3)
+        psuit = p3/13
+        psuit = int(psuit)
+        p3= int(p3)
+        prank = p3%13
+        print("Your Card 3: {0} of {1}".format(rankName[prank],suitName[psuit]))
+
+        p4 = int(p4)
+        psuit = p4/13
+        psuit = int(psuit)
+        p4= int(p4)
+        prank = p4%13
+        print("Your Card 4: {0} of {1}".format(rankName[prank],suitName[psuit]))
+
+        print("")
+    
+        c1 = int(c1)
+        csuit = c1/13
+        csuit = int(csuit)
+        c1= int(c1)
+        crank = c1%13
+        print("Computer Card 1: {0} of {1}".format(rankName[crank],suitName[csuit]))
+
+        c2 = int(c2)
+        csuit = c2/13
+        csuit = int(csuit)
+        c2= int(c2)
+        crank = c2%13
+        print("Computer Card 2: {0} of {1}".format(rankName[crank],suitName[csuit]))
+
+        c3 = int(c3)
+        csuit = c3/13
+        csuit = int(csuit)
+        c3= int(c3)
+        crank = c3%13
+        print("Computer Card 3: {0} of {1}".format(rankName[crank],suitName[csuit]))
+
+        c4 = int(c4)
+        csuit = c4/13
+        csuit = int(csuit)
+        c4= int(c4)
+        crank = c4%13
+        print("Computer Card 4: {0} of {1}".format(rankName[crank],suitName[csuit]))
+
+        print("")
+
+        #compare values of last cards
+        if prank > crank:
+            print("You won all eight cards!")
+            cardLoc[c1] = 1
+            cardLoc[c2] = 1
+            cardLoc[c3] = 1
+            cardLoc[c4] = 1
+        
+        if crank > prank:
+            print("Computer won all eight cards!")
+            cardLoc[p1] = 2
+            cardLoc[p2] = 2
+            cardLoc[p3] = 2
+            cardLoc[p4] = 2
+
+        #if draw, move forward without effect
+        if crank == prank:
+            print("Draw!")
+
+    #print score
+    print("")
+    print("Current score:")
+    print("Player: {}".format(cardLoc.count(1)))
+    print("Computer: {}".format(cardLoc.count(2)))
+    print("")
+
+    #if game is won at the end of hand
+    if cardLoc.count(1) == 52:
+        print("Good game! You won the game!")
+
+    if cardLoc.count(2) == 52:
+        print("Good game! Computer won the game!")
+    
+    print("")
+    
+
+    
+
+        
+
+#the main program
+def main():
+    intro()
+    print("")
+    clearDeck()
+
+    assignCard()
+
+    round = input("Type 'p' to begin game: ")
+    print("")
+    while round == "p":
+        execute()
+        if cardLoc.count(1) == 52:
+            quit()
+        if cardLoc.count(2) == 52:
+            quit()
+        round = input("Type 'p' to play another round: ")
+        print("")
+    
+    print("")
+
+
+#run program
+main()
+
